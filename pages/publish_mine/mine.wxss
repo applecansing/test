@@ -1,0 +1,88 @@
+@import '../../css/main.wxss';
+.classify{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.container{
+    padding-top: 100rpx;
+    padding-bottom: 90rpx;
+}
+.classify_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.classify_item.active text{
+    display: block;
+    width: 176rpx;
+    height: 60rpx;
+    line-height:60rpx;
+    background: #91b1db;
+    border-radius: 40rpx;
+}
+.name{
+    width: 150rpx;
+}
+.triangle{
+    width:0;
+    height:0;
+    border-width:14rpx;
+    border-style:solid;
+    border-color:#ccc transparent transparent transparent;
+    margin-top:20rpx;
+    margin-left:20rpx;
+}
+image.pic{
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+    margin-right: 14rpx;
+}
+.text{
+    height: 290rpx;
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.map{
+    width: 240rpx;
+    height: 64rpx;
+    border-radius: 40rpx;
+}
+.nav text{
+    padding: 10rpx 0;
+}
+.nav .active text{
+    color: #a0c2f0;
+    border-bottom: 1px solid #a0c2f0;
+}
+.goods_item + .goods_item{
+  margin-top: 20rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

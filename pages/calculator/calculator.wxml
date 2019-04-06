@@ -1,0 +1,243 @@
+<!--pages/calculator/calculator.wxml-->
+ <loading hidden="{{hidden}}">加载中...</loading> 
+<view class="swiper-tab">
+ <view class="swiper-tab-list"><view class="{{currentTab==0 ? 'on' : ''}}"  data-current="0" bindtap="swichNav">商业贷款</view></view>
+ <view class="swiper-tab-list"><view class="{{currentTab==1 ? 'on' : ''}}"  data-current="1" bindtap="swichNav">公积金贷款</view></view>
+ <view class="swiper-tab-list"><view class="{{currentTab==2 ? 'on' : ''}}"  data-current="2" bindtap="swichNav">组合贷款</view></view>
+</view>
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 104}}px"   bindchange="bindChange">
+ <!-- 商业贷款 -->
+ <swiper-item class="swiper-one" style='overflow-y:scroll;'>
+    <view class="item-one">
+      <view class="tit"><view class="line"></view><text>计算方式</text><view class="line"></view></view>
+      <view class="tab-one">
+        <text class="{{oneIndex==0 ? 'active' : ''}}" data-id="0" bindtap="jisuan">总价计算</text>
+        <text class="{{oneIndex==1 ? 'active' : ''}}" data-id="1" bindtap="jisuan">单价计算</text>
+      </view>
+      <view class="zj_shuRu" wx:if="{{oneIndex==0}}">
+        <view>贷款金额：<input type="number" bindinput="money_val" value='{{money}}'/>万元</view>
+          <view> 按揭年数： <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}"><text class="color-333">{{array[index]}}</text></picker><image src="../../img/xing.png"></image> </view>
+          <view> 银行利率：<text class="color-333">{{index==0?(bank_rate[0]*100):(index==1 || index==2 || index==3 || index==4)?(bank_rate[1]*100):(bank_rate[2]*100)}}%</text> </view>
+        </view>
+       <view class="zj_shuRu" wx:elif="{{oneIndex==1}}">
+        <view>单价：<input type="number" bindinput="money_val1" value='{{money1}}'/>元/平方米</view>
+         <view>面积：<input type="number" bindinput="area1" value='{{area1}}'/>平方米</view>
+          <view> 按揭成数：<picker bindchange="bindPickerChange2" value="{{index2}}" range="{{array2}}"><text class="color-333">{{array2[index2]}}</text></picker><image src="../../img/xing.png"></image> </view>
+        <view> 按揭年数：<picker bindchange="bindPickerChange1" value="{{index1}}" range="{{array1}}"><text class="color-333">{{array1[index1]}}</text></picker><image src="../../img/xing.png"></image> </view>
+        <view> 银行利率：<text class="color-333">{{index1==0?(bank_rate[0]*100):(index1==1 || index1==2 || index1==3 || index1==4)?(bank_rate[1]*100):(bank_rate[2]*100)}}%</text> </view>
+      </view>
+    </view>
+    <view class="item-one">
+        <view class="tit"><view class="line"></view><text>还款方式</text><view class="line"></view></view>
+        <view class="tab-one">
+          <text class="{{twoIndex==0 ? 'active' : ''}}" data-id="0" bindtap="huankuang">等额本息</text>
+          <text class="{{twoIndex==1 ? 'active' : ''}}" data-id="1" bindtap="huankuang">等额本金</text>
+        </view>
+        <view class="money_tip" wx:if="{{twoIndex==0}}">每月还款固定，所还总利息较多，适合收入稳定者</view>
+         <view class="money_tip" wx:elif="{{twoIndex==1}}">每月还款递减，所还总利息较低，前期还款额较大</view>
+      </view>
+    <button class="calculation" hover-class="hover-active"  data-bankRate="{{index==0?(bank_rate[0]):(index==1 || index==2 || index==3 || index==4)?(bank_rate[1]):(bank_rate[2])}}" data-bankRateone="{{index1==0?(bank_rate[0]):(index1==1 || index1==2 || index1==3 || index1==4)?(bank_rate[1]):(bank_rate[2])}}" bindtap="doing">开始计算</button>
+    <!-- 计算结果 -->
+    <!-- 总价-等额本息 -->
+    <view class="jisuan_res"  wx:if="{{oneIndex==0 && twoIndex==0}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+        <view class="classname">贷款总额<text>￥{{daikuang_money}}元</text></view>
+        <view class="classname">还款总额<text>￥{{huan_money}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+        <view class="classname">按揭年数<text class="color2">{{array[index]}}</text></view>
+        <view class="classname">月均还款<text class="color2">￥{{pay_money}}元</text></view>
+      </view>
+    </view>
+       <!-- 总价-等额本金 -->
+     <view class="jisuan_res"  wx:elif="{{oneIndex==0 && twoIndex==1}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+        <view class="classname">贷款总额<text>￥{{dk_money_two}}元</text></view>
+        <view class="classname">还款总额<text>￥{{h_money_two}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay_two}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+        <view class="classname">按揭年数<text class="color2">{{array[index]}}</text></view>
+        <view class="classname">首月还款<text class="color2">￥{{money_start}}元</text></view>
+        <view class="classname">末月还款<text class="color2">￥{{money_end}}元</text></view>
+      </view>
+    </view>
+    <!-- 单价-等额本息 -->
+    <view class="jisuan_res"  wx:if="{{oneIndex==1 && twoIndex==0}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+        <view class="classname">房屋总价<text>￥{{area_money3}}元</text></view>
+        <view class="classname">贷款总额<text>￥{{daikuang_money3}}元</text></view>
+        <view class="classname">还款总额<text>￥{{huan_money3}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay3}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+       <view class="classname">首期付款<text class="color2">￥{{need_money1}}元</text></view>
+        <view class="classname">按揭年数<text class="color2">{{array1[index1]}}</text></view>
+        <view class="classname">月均还款<text class="color2">￥{{pay_money2}}元</text></view>
+      </view>
+    </view>
+    <!-- 单价-等额本金 -->
+    <view class="jisuan_res"  wx:elif="{{oneIndex==1 && twoIndex==1}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+      <view class="classname">房屋总价<text>￥{{area_money4}}元</text></view>
+        <view class="classname">贷款总额<text>￥{{dk_money4}}元</text></view>
+        <view class="classname">还款总额<text>￥{{h_money4}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay4}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+        <view class="classname">首期付款<text class="color2">￥{{need_money2}}元</text></view>
+        <view class="classname">按揭年数<text class="color2">{{array1[index1]}}</text></view>
+        <view class="classname">首月还款<text class="color2">￥{{money_start1}}元</text></view>
+        <view class="classname">末月还款<text class="color2">￥{{money_end1}}元</text></view>
+      </view>
+    </view>
+ </swiper-item>
+ <!-- 公积金贷款 -->
+ <swiper-item class="swiper-one" style='overflow-y:scroll;'>
+    <view class="item-one">
+      <view class="tit"><view class="line"></view><text>计算方式</text><view class="line"></view></view>
+      <view class="tab-one">
+        <text class="{{threeIndex==0 ? 'active' : ''}}" data-id="0" bindtap="jisuan1">总价计算</text>
+        <text class="{{threeIndex==1 ? 'active' : ''}}" data-id="1" bindtap="jisuan1">单价计算</text>
+      </view>
+      <view class="zj_shuRu" wx:if="{{threeIndex==0}}">
+        <view>贷款金额：<input type="number" bindinput="money_val2" value='{{money2}}'/>万元</view>
+          <view> 按揭年数： <picker bindchange="bindPickerChange3" value="{{index3}}" range="{{array}}"><text class="color-333">{{array[index3]}}</text></picker><image src="../../img/xing.png"></image> </view>
+          <view> 银行利率：<text class="color-333">{{(index3==0 || index3==1 || index3==2 || index3==3 || index3==4)?(bank_rate1[0]*100):(bank_rate1[1]*100)}}%</text> </view>
+        </view>
+       <view class="zj_shuRu" wx:elif="{{threeIndex==1}}">
+        <view>单价：<input type="number" bindinput="money_val3" value='{{money3}}'/>元/平方米</view>
+         <view>面积：<input type="number" bindinput="area2" value='{{area2}}'/>平方米</view>
+          <view> 按揭成数：<picker bindchange="bindPickerChange4" value="{{index4}}" range="{{array2}}"><text class="color-333">{{array2[index4]}}</text></picker><image src="../../img/xing.png"></image> </view>
+        <view> 按揭年数：<picker bindchange="bindPickerChange5" value="{{index5}}" range="{{array1}}"><text class="color-333">{{array1[index5]}}</text></picker><image src="../../img/xing.png"></image> </view>
+        <view> 银行利率：<text class="color-333">{{(index5==0 || index5==1 || index5==2 || index5==3 || index5==4)?(bank_rate1[0]*100):(bank_rate1[1]*100)}}%</text> </view>
+      </view>
+    </view>
+    <view class="item-one">
+        <view class="tit"><view class="line"></view><text>还款方式</text><view class="line"></view></view>
+        <view class="tab-one">
+          <text class="{{fourIndex==0 ? 'active' : ''}}" data-id="0" bindtap="huankuang1">等额本息</text>
+          <text class="{{fourIndex==1 ? 'active' : ''}}" data-id="1" bindtap="huankuang1">等额本金</text>
+        </view>
+        <view class="money_tip" wx:if="{{fourIndex==0}}">每月还款固定，所还总利息较多，适合收入稳定者</view>
+         <view class="money_tip" wx:elif="{{fourIndex==1}}">每月还款递减，所还总利息较低，前期还款额较大</view>
+      </view>
+    <button class="calculation" hover-class="hover-active"   data-bankRate="{{(index3==0 || index3==1 || index3==2 || index3==3 || index3==4)?(bank_rate1[0]):(bank_rate1[1])}}"  data-bankRateone="{{(index5==0 || index5==1 || index5==2 || index5==3 || index5==4)?(bank_rate1[0]):(bank_rate1[1])}}" bindtap="doing2">开始计算</button>
+    <!-- 计算结果 -->
+    <!-- 总价-等额本息 -->
+    <view class="jisuan_res"  wx:if="{{threeIndex==0 && fourIndex==0}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+        <view class="classname">贷款总额<text>￥{{daikuang_money4}}元</text></view>
+        <view class="classname">还款总额<text>￥{{huan_money4}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay_four}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+        <view class="classname">按揭年数<text class="color2">{{array[index3]}}</text></view>
+        <view class="classname">月均还款<text class="color2">￥{{pay_money3}}元</text></view>
+      </view>
+    </view>
+    <!-- 总价-等额本金 -->
+     <view class="jisuan_res"  wx:elif="{{threeIndex==0 && fourIndex==1}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+        <view class="classname">贷款总额<text>￥{{dk_money5}}元</text></view>
+        <view class="classname">还款总额<text>￥{{h_money5}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay5}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+        <view class="classname">按揭年数<text class="color2">{{array[index3]}}</text></view>
+        <view class="classname">首月还款<text class="color2">￥{{money_start2}}元</text></view>
+        <view class="classname">末月还款<text class="color2">￥{{money_end2}}元</text></view>
+      </view>
+    </view>
+     <!-- 单价-等额本息 -->
+    <view class="jisuan_res"  wx:if="{{threeIndex==1 && fourIndex==0}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+        <view class="classname">房屋总价<text>￥{{area_money6}}元</text></view>
+        <view class="classname">贷款总额<text>￥{{daikuang_money6}}元</text></view>
+        <view class="classname">还款总额<text>￥{{huan_money6}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay6}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+       <view class="classname">首期付款<text class="color2">￥{{need_money3}}元</text></view>
+        <view class="classname">按揭年数<text class="color2">{{array1[index3]}}</text></view>
+        <view class="classname">月均还款<text class="color2">￥{{pay_money4}}元</text></view>
+      </view>
+    </view>
+    <!-- 单价-等额本金 -->
+    <view class="jisuan_res"  wx:elif="{{threeIndex==1 && fourIndex==1}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+      <view class="classname">房屋总价<text>￥{{area_money7}}元</text></view>
+        <view class="classname">贷款总额<text>￥{{dk_money7}}元</text></view>
+        <view class="classname">还款总额<text>￥{{h_money7}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay7}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+        <view class="classname">首期付款<text class="color2">￥{{need_money4}}元</text></view>
+        <view class="classname">按揭年数<text class="color2">{{array1[index5]}}</text></view>
+        <view class="classname">首月还款<text class="color2">￥{{money_start3}}元</text></view>
+        <view class="classname">末月还款<text class="color2">￥{{money_end3}}元</text></view>
+      </view>
+    </view>
+ </swiper-item>
+ <!-- 组合贷款 -->
+<swiper-item class="swiper-one" style='overflow-y:scroll;'>
+    <view class="item-one">
+      <view class="tit"><view class="line"></view><text>计算方式</text><view class="line"></view></view>
+      <view class="zj_shuRu">
+        <view>商业贷款金额：<input type="number" bindinput="money_val4" value='{{money4}}'/>万元</view>
+        <view>公积金贷款金额：<input type="number" bindinput="money_val5" value='{{money5}}'/>万元</view>
+          <view> 按揭年数： <picker bindchange="bindPickerChange6" value="{{index6}}" range="{{array}}"><text class="color-333">{{array[index6]}}</text></picker><image src="../../img/xing.png"></image> </view>
+          <view> 商业银行利率：<text class="color-333">{{index6==0?(bank_rate[0]*100):(index6==1 || index6==2 || index6==3 || index6==4)?(bank_rate[1]*100):(bank_rate[2]*100)}}%</text> </view>
+           <view> 公积金银行利率：<text class="color-333">{{(index6==0 || index6==1 || index6==2 || index6==3 || index6==4)?(bank_rate1[0]*100):(bank_rate1[1]*100)}}%</text> </view>
+        </view>
+    </view>
+    <view class="item-one">
+        <view class="tit"><view class="line"></view><text>还款方式</text><view class="line"></view></view>
+        <view class="tab-one">
+          <text class="{{fiveIndex==0 ? 'active' : ''}}" data-id="0" bindtap="huankuang2">等额本息</text>
+          <text class="{{fiveIndex==1 ? 'active' : ''}}" data-id="1" bindtap="huankuang2">等额本金</text>
+        </view>
+        <view class="money_tip" wx:if="{{fiveIndex==0}}">每月还款固定，所还总利息较多，适合收入稳定者</view>
+         <view class="money_tip" wx:elif="{{fiveIndex==1}}">每月还款递减，所还总利息较低，前期还款额较大</view>
+      </view>
+    <button class="calculation" hover-class="hover-active"  data-bankRate="{{index6==0?(bank_rate[0]):(index6==1 || index6==2 || index6==3 || index6==4)?(bank_rate[1]):(bank_rate[2])}}" data-bankRateone="{{(index6==0 || index6==1 || index6==2 || index6==3 || index6==4)?(bank_rate1[0]):(bank_rate1[1])}}" bindtap="doing3">开始计算</button>
+    <!-- 计算结果 -->
+    <!-- 等额本息 -->
+    <view class="jisuan_res"  wx:if="{{fiveIndex==0}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+        <view class="classname">贷款总额<text>￥{{daikuang_money_end}}元</text></view>
+        <view class="classname">还款总额<text>￥{{huan_money_end}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay_end}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+        <view class="classname">按揭年数<text class="color2">{{array[index6]}}</text></view>
+        <view class="classname">月均还款<text class="color2">￥{{pay_money_end}}元</text></view>
+      </view>
+    </view>
+    <!-- 等额本金 -->
+     <view class="jisuan_res"  wx:elif="{{fiveIndex==1}}">
+      <view class="tit"><view class="line"></view><text>计算结果</text><view class="line"></view></view>
+      <view class="res_box color-333">
+        <view class="classname">贷款总额<text>￥{{dk_money_end1}}元</text></view>
+        <view class="classname">还款总额<text>￥{{h_money_end1}}元</text></view>
+        <view class="classname">支付利息<text>￥{{pay_end1}}元</text></view>
+      </view>
+       <view class="res_box color-333">
+        <view class="classname">按揭年数<text class="color2">{{array[index6]}}</text></view>
+        <view class="classname">首月还款<text class="color2">￥{{money_start4}}元</text></view>
+        <view class="classname">末月还款<text class="color2">￥{{money_end4}}元</text></view>
+      </view>
+    </view>
+ </swiper-item>
+</swiper>
+<button class='telBtn' bindtap='call'>立即咨询</button>

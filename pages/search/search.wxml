@@ -1,0 +1,54 @@
+<import src="../template/goods.wxml" />
+<view class="bigBox">
+  <view class='header bgc1 h100 plr24 flex_a'>
+    <view class="search flex1 flex_a plr24">
+      <image src="../../img/ic_search2.png" style='width:34rpx;height:34rpx;'></image>
+      <!-- <input type="text" placeholder='请输入小区名称或城区' class='ml20 color1 flex1' placeholder-style="color:#a0c2f0" confirm-type="search" focus="true" bindconfirm="search" value="{{search_name}}"/> -->
+      <input type="text" placeholder='请输入小区名称或城区' class='ml20 color1 flex1' placeholder-style="color:#a0c2f0" bindinput='search' value="{{search_name}}"/>
+    </view>
+    <button class='colw font15' bindtap='searchBtn'>搜索</button>
+  </view>
+  <view class='mb20' wx:if="{{history && history_key.length>0}}">
+    <view class='plr24 col9 lh80'>搜索历史</view>
+    <view class='plr24 bw pt20 clearfix'>
+      <block wx:for="{{history_key}}">
+        <view class='text_b tap fl mb20' bindtap='history_tap' data-text='{{item}}'>{{item}}</view>
+      </block>
+    </view>
+  </view>
+  <view class='sort col9 lh100 bw flex bdb pos_r' wx:if="{{!history}}">
+    <block wx:for="{{tab_bar}}">
+      <view class='sort_item flex_aj flex1 {{item.selected==1?"active":""}}' bindtap='select' data-type="{{item.type}}" data-index="{{index}}">
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+    <view>
+      <view class="type_list lh90 bw" wx:if="{{type_list_show}}">
+        <block wx:for="{{type0_list}}" wx:if="{{type==0}}">
+          <view class="type tap flex_a" data-id="{{item.area_id}}" bindtap='type_list_tap' data-index="{{index}}" data-list="{{type0_list}}">
+            <view style='width:104rpx;' class='tac'>
+              <image src='../../img/true.png' class='ico_true' wx:if="{{item.active == 1}}"></image>
+            </view>
+            <text class='{{item.active==1?"color1":""}}'>{{item.name}}</text>
+          </view>
+        </block>
+        <block wx:else wx:for="{{type==1?type1_list:type==2?type2_list:type3_list}}" wx:if="{{type==1 || type == 2 || type == 3}}">
+          <view class="type tap flex_a" data-id="{{item.id}}" bindtap='type_list_tap' data-index="{{index}}" data-list="{{type==1?type1_list:type==2?type2_list:type3_list}}">
+            <view style='width:104rpx;' class='tac'>
+              <image src='../../img/true.png' class='ico_true' wx:if="{{item.active == 1}}"></image>
+            </view>
+            <text>{{item.title}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="container">
+    <view class='mt20'>
+      <view class='goods_list'>
+        <template is="goods" data="{{goods,empty,history}}" />
+      </view>
+    </view>
+  </view>
+</view>
+<view class="mask" wx:if="{{mask}}"></view>

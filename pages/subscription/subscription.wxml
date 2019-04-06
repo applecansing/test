@@ -1,0 +1,50 @@
+<!--pages/subscription/subscription.wxml-->
+<view class='bgImg'>
+  <image src='../../img/bg2.png'></image>
+</view>
+<view class='subListBox mlr24'>
+    <block wx:for='{{list}}'  wx-if='{{loading}}'>
+      <view class='subList plr30 bgc'>
+        <view class='LR-block border-b' bindtap='details' data-id='{{item.id}}'>
+            <view class='pt30 flex1'>
+              <view class='font15 col3 flex-ac'><image src='../../img/location.png' class='location mr20'></image>{{item.area_name}}</view>
+              <view class='font14 pt30 btnBox'>
+                <view>{{item.type==1?'新房':item.type==2?'二手房':item.type==3?'租房':item.type==4?'商铺出租':'商铺出售'}}</view>
+                <view wx:if="{{item.type==1 || item.type==2 || item.type==3}}">{{item.want_layout_s==1?'一室':item.want_layout_s==2?'二室':item.want_layout_s==3?'三室':item.want_layout_s==4?'四室':item.want_layout_s==5?'四室以上':'厅室不限'}}</view>
+                <view  wx:if="{{item.type==4 || item.type==5}}">{{item.areas?item.areas:'面积不限'}}</view>
+                <view>{{item.title==''?'价格不限':item.title}}</view>
+              </view>
+            </view>
+            <view class='font14 color2' wx:if="{{item.count==0}}">暂无更新</view>
+            <view class='font14 color2' wx:if="{{item.count != 0}}">{{item.count}}+</view>
+        </view>
+        <view class='editBox'>
+          <view bindtap='edit' data-item='{{item}}'><image src='../../img/edit.png'></image></view>
+          <view bindtap='delete' data-id='{{item.id}}'><image src='../../img/del.png'></image></view>
+        </view>
+      </view>
+    </block>
+    <block wx-if='{{!loading}}'>
+      <view class="tip">
+          <image src="../../img/empty.png"></image>
+          <text>暂无订阅</text>
+      </view>
+    </block>
+
+      <!-- <view class='subList plr30 bgc'>
+      <view class='LR-block border-b'>
+          <view class='pt30 flex1'>
+            <view class='font14 col3 flex-ac'><image src='../../img/location.png' class='location mr20'></image>东莞 南城区</view>
+            <view class='font13 pt30 btnBox '>
+              <view>新房</view><view>三室</view>
+            </view>
+          </view>
+          <view class='font13 color2'>暂无更新</view>
+      </view>
+      <view class='editBox'>
+        <view><image src='../../img/edit.png'></image></view>
+        <view><image src='../../img/del.png'></image></view>
+      </view>
+    </view>  -->
+</view>
+<button class='confirm' bindtap='subscribe'>+添加订阅</button>

@@ -1,0 +1,2 @@
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="13"  controls="{{controls}}" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="drag_map" style="width: 100%; height:100%;">
+</map>

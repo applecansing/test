@@ -1,0 +1,66 @@
+/* pages/sub_details/sub_details.wxss */
+@import '../../css/zy_common.wxss';
+.bgImg image{
+  width: 100%;
+  height: 245rpx;
+}
+.location{
+  width: 24rpx;
+  height: 30rpx;
+}
+.roomImg{
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 45rpx;
+  margin-bottom: 40rpx;
+}
+.btnBox view{
+  display: inline-block;
+  background:#4abfff;
+  color: white;
+  padding: 6rpx 18rpx;
+  border-radius: 10rpx;
+  -webkit-border-radius:10rpx;  
+  margin-bottom: 20rpx;
+  margin-right: 20rpx;
+}
+.detailsTit{
+  background-color: #fff;
+  padding-left: 70rpx;
+  padding-right: 76rpx;
+  padding-top: 40rpx;
+  border-radius: 10rpx;
+  position: absolute;
+  top: 140rpx;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 10rpx #ccc
+}
+.subListBox{
+    margin-top: 172rpx;
+    background-color: #fff;
+}
+.subListBox>view + view{
+  border-top: 1px solid #e5e5e5;
+}
+.logos{
+  width: 260rpx;
+  height: 186rpx;
+  /* background-color: #ccc; */
+  margin-right: 25rpx;
+}
+.logos image{
+  width: 100%;
+  height: 100%;
+}
+.btnBox2 view{
+  display: inline-block;
+  padding: 8rpx 12rpx;
+  border-radius: 10rpx;
+  -webkit-border-radius:10rpx;  
+  margin-bottom: 15rpx;
+  margin-right: 12rpx;
+  border: 1px dotted #4abfff;
+  color: #4abfff;
+  margin-top: 15rpx;
+}

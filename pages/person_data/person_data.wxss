@@ -1,0 +1,61 @@
+/* pages/person_data/person_data.wxss */
+@import '../../css/zy_common.wxss';
+.user{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  -webkit-border-radius:50%;
+}
+.personBox>view + view{
+ border-top: 1px solid #e5e5e5;
+}
+.sex{
+  height: 108rpx;
+}
+
+.gaiNameWin{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    background: #fff;
+  	width: 80%;
+    margin-left: -40%;
+     margin-top: -30%; 
+	  border-radius: 10rpx;
+		-webkit-border-radius:  10rpx;
+		-moz-border-radius:  10rpx;
+	   /* display: none;  */
+}
+.gaiNameBox{
+	padding: 40rpx 55rpx;
+}
+.gaiNameBox p + p{
+    margin-top: 40rpx;
+    border-radius: 10rpx;
+		-webkit-border-radius:  10rpx;
+			-moz-border-radius:  10rpx;
+}
+.user_name{
+	border: none;
+	height: 77rpx;
+	line-height: 77rpx;
+  padding: 0 20rpx;
+  width: calc(100% - 40rpx);
+}
+.user_name::-webkit-input-placeholder{
+	color: #999;
+	font-size: 28rpx;
+}
+.confirm_chose text{
+	flex: 1;
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+}
+.confirm_chose text:first-child{
+	border-bottom-left-radius: 10rpx;
+}
+.confirm_chose text:last-child{
+	border-bottom-right-radius: 10rpx;
+}

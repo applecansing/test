@@ -1,0 +1,84 @@
+<import src="../template/goods.wxml" />
+<view class='container'>
+  <view class='header bgc1'>
+    <view class='flex_a plr24'>
+      <image src='../../img/ico6.png' style='width:28rpx;height:36rpx'></image>
+      <text class='city colw plr10'>{{city}}</text>
+          <navigator  url="/pages/search/search" class="search  flex_a flex1 plr24">
+            <image src="../../img/ic_search.png" style='width:34rpx;height:34rpx;'></image>
+            <input type="text" placeholder='搜索' class='ml20 colw flex1' placeholder-style="color:#fff" disabled/>
+          </navigator>
+    </view>
+    <view class='nav1 plr24'>
+      <view class='flex_a tac bw border-r1 h200'>
+        <navigator open-type="switchTab" url="/pages/new_index/index" class='flex1 flex_aj flex_column hh100'>
+          <image src='../../img/ico7.png' style='width:102rpx;height:102rpx'></image>
+          <view class='col9'>新房</view>
+        </navigator>
+        <navigator open-type="switchTab" url="/pages/old_index/index" class='flex1 flex_aj flex_column hh100'>
+          <image src='../../img/ico8.png' style='width:102rpx;height:102rpx'></image>
+          <view class='col9'>二手房</view>
+        </navigator>
+        <navigator url="/pages/list_index/index?type=3" class='flex1 flex_aj flex_column hh100'>
+          <image src='../../img/ico9.png' style='width:102rpx;height:102rpx'></image>
+          <view class='col9'>租房</view>
+        </navigator>
+        <navigator url="/pages/list_index/index?type=5" class='flex1 flex_aj flex_column hh100'>
+          <image src='../../img/ico10.png' style='width:102rpx;height:102rpx'></image>
+          <view class='col9'>商铺</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 房产头条 -->
+  <navigator url="/pages/headlines/headlines" class='ad flex plr24 messageBox'>
+    <view class='fc tac'>
+      <view>房产</view>
+      <view class='tt'>头条</view>
+    </view>
+    <swiper  autoplay="true" interval="3000" duration="2000" circular="true" vertical="true" class='flex1'>
+      <block wx:for="{{headline}}">
+        <swiper-item>
+         <view class='h120 flex_a'>
+            <text class='dot'></text>
+            <text class='ml20 list_item'>{{item.title}}</text>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </navigator>
+  <view class='nav2 clearfix tac pt30 bw mt20'>
+    <navigator url="/pages/news/index?type=1" class='nav2_item' hover-class="none">
+      <image src='../../img/ico11.png' style='width:88rpx;height:88rpx;'></image>
+      <view class='col9'>房产过户</view>
+    </navigator>
+    <navigator url="/pages/news/index?type=2" class='nav2_item' hover-class="none">
+      <image src='../../img/ico12.png' style='width:88rpx;height:88rpx;'></image>
+      <view class='col9'>商家活动</view>
+    </navigator>
+    <navigator url="/pages/news/index?type=3" class='nav2_item' hover-class="none">
+      <image src='../../img/ico13.png' style='width:88rpx;height:88rpx;'></image>
+      <view class='col9'>装修咨询</view>
+    </navigator>
+    <navigator url="/pages/calculator/calculator" class='nav2_item' hover-class="none">
+      <image src='../../img/ico14.png' style='width:88rpx;height:88rpx;'></image>
+      <view class='col9'>房产计算</view>
+    </navigator>
+    <navigator url="/pages/news/index?type=4" class='nav2_item' hover-class="none">
+      <image src='../../img/ico15.png' style='width:88rpx;height:88rpx;'></image>
+      <view class='col9'>电话发布</view>
+    </navigator>
+    <navigator url="/pages/news/index?type=5" class='nav2_item' hover-class="none">
+      <image src='../../img/ico16.png' style='width:88rpx;height:88rpx;'></image>
+      <view class='col9'>资产评估</view>
+    </navigator>
+  </view>
+  <view class='mt20'>
+    <view class='bdb h100 flex_a bw plr24'>
+      <image src='../../img/ico17.png' style='width:278rpx;height:36rpx;'></image>
+    </view>
+    <view class='goods_list'>
+      <template is="goods" data="{{goods,empty,isVip,uhide,uhidea}}" />
+    </view>
+  </view>
+</view>

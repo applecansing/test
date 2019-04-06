@@ -1,0 +1,51 @@
+@import './common.wxss';
+.goods{
+  padding-top:20rpx;
+  padding-bottom:20rpx;
+}
+.goods .goods_content{
+  min-height: 186rpx;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+.goods_pic{
+  width: 260rpx;
+  height: 186rpx;
+}
+.attr{
+  border: 1px dotted #4abeff;
+  padding: 1px 10rpx;
+  border-radius: 10rpx;
+  margin-right: 10rpx;
+}
+.goods_city{
+  width: 24rpx;
+  height: 32rpx;
+}
+.goods_list .goods + .goods{
+  border-top: 1px solid #e5e5e5;
+}
+.mask{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  z-index: 1;
+  top: 0;
+}
+.ico_true{
+  width: 32rpx;
+  height: 28rpx;
+}
+.map.active{
+  border-color: #ccc;
+  color: #ccc;
+}
+.details_img{
+  margin-top: 20rpx;
+}
+.details_img .pic{
+  width: 100%;
+}

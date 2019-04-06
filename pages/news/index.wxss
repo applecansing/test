@@ -1,0 +1,5 @@
+@import '../../css/main.wxss';
+.pic{
+    width: 100%;
+    height: 100%; 
+}

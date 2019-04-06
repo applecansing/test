@@ -1,0 +1,4 @@
+<import src="../template/news.wxml" />
+<view class="container">
+    <template is="news" data="{{news}}"/>
+</view>

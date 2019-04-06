@@ -1,0 +1,10 @@
+/* pages/link_us/link_us.wxss */
+@import '../../css/zy_common.wxss';
+.imgBox image{
+  width: 100%;
+  height: 400rpx;
+}
+.pic{
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,37 @@
+@import '../../css/main.wxss';
+.container{
+    padding-bottom: 120rpx;
+}
+.pic_box .pic{
+    width: 100%;
+    /* height: 350rpx; */
+}
+.share{
+    position: absolute;
+    right: 24rpx;
+    bottom: 20rpx;
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    background: rgba(0,0,0,.5);
+}
+.share .ico{
+    left: 50%;
+    top: 50%;
+    margin-top: -19rpx;
+    margin-left: -17rpx;
+}
+.collect{
+  right: 124rpx;
+}
+.name{
+    width: 108rpx;
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.attrs{
+  width: 50%;
+}

@@ -1,0 +1,22 @@
+<import src="../template/goods.wxml" />
+<view class="classify flex_a bgc1 h100 tac colw">
+    <block wx:for='{{tab_bar}}'>
+        <view class="classify_item flex1 wx:if='{{item.selected==1?'active':''}}'" bindtap='select' data-index="{{index}}" data-type='{{item.type}}'>
+            <text>{{item.name}}</text>
+        </view>
+    </block>
+</view>
+<view class="container">
+    <view class="nav flex lh100 bw tac col9">
+        <block wx:for="{{nav}}">
+            <view class="flex1 wx:if='{{item.selected==1?'active':''}}'" bindtap='nav' data-index="{{index}}" data-type='{{item.type}}'>
+                <text>{{item.name}}</text>
+            </view>
+        </block>
+    </view>
+    <view class='mt20'>
+        <view class='goods_list'>
+            <template is="goods2" data="{{goods,empty}}"/>
+        </view>
+    </view>
+</view>

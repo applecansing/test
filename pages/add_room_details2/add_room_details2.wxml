@@ -1,0 +1,10 @@
+<!--pages/add_room_details2/add_room_details2.wxml-->
+<view class='pt20'>
+ <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio font15 col9" wx:for="{{list}}">
+      <radio value="{{item.id+','+item.title}}" checked="{{item.checked}}" class='mr20'/>{{item.title}}
+    </label>
+  </radio-group> 
+</view>
+<button class='confirm' bindtap="confirm">确认</button>
+ 

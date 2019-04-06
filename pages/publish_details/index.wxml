@@ -1,0 +1,91 @@
+<view class="bigBox">
+  <view class='container'>
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">标 题</text>
+      <view class="bdb h100 flex1 tae">{{msg.title}}</view>
+    </view>
+    <view class="flex_a pr24 bw lh100" wx:if='{{msg.price>0}}'>
+      <text class="name tac">{{(msg.type==1 || msg.type == 2 || msg.type==5)?"单 价":"租 金"}}</text>
+      <view class="bdb h100 flex1 tae">{{msg.price}}
+        <text class="ml20">元</text>
+      </view>
+    </view>
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">房 型</text>
+      <view class="h100 flex1 tae">{{msg.layout_s}}室{{msg.layout_t}}厅{{msg.layout_c}}卫</view>
+    </view>
+    <view class="flex_a pr24 bw lh100 mb20">
+      <text class="name tac">建筑类型</text>
+      <view class="h100 flex1 tae bdt">{{msg.house_type_name}}</view>
+    </view>
+    <view class="flex_a pr24 bw lh100" wx:if='{{msg.type == 1 || msg.type == 2 || msg.type == 5}}'>
+      <text class="name tac">售 价</text>
+      <view class="bdb h100 flex1 tae">{{msg.totalprice}}
+        <text class="ml20">万元</text>
+      </view>
+    </view>
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">面 积</text>
+      <view class="h100 flex1 tae">{{msg.areas}}
+        <text class="ml20">m²</text>
+      </view>
+    </view>
+    <view class="flex_a pr24 bw lh100 mt20">
+      <text class="name tac">小 区</text>
+      <view class="bdb h100 flex1 tae">{{msg.village}}</view>
+    </view>
+    <!-- <view class="flex_a pr24 bw lh100">
+      <text class="name tac">地 址</text>
+      <view class="bdb h100 flex1 tae">{{msg.address}}</view>
+    </view> -->
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">楼 层</text>
+      <view class="bdb h100 flex1 tae">{{msg.floor}}</view>
+    </view>
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">装 修</text>
+      <view class="bdb h100 flex1 tae">{{msg.name}}</view>
+    </view>
+    <!-- <view class="flex_a pr24 bw lh100">
+      <text class="name tac">年 代</text>
+      <view class="bdb h100 flex1 tae">{{msg.years}}年</view>
+    </view> -->
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">联系人</text>
+      <view class="bdb h100 flex1 tae">{{msg.owner}}({{(msg.is_type==1?"经纪人":"个人")}})</view>
+    </view>
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">联系电话</text>
+      <view class="h100 flex1 tae">{{msg.phone}}</view>
+    </view>
+    <view>
+      <view class="lh80 plr24 col9">上传主图</view>
+      <view class="pl24 bw pt20 font0">
+        <block wx:if="{{msg.indexpic}}">
+        <image class="pic" src="{{msg.indexpic}}"></image>
+        </block>
+        <block wx:else>
+          <image class="pics" src="../../img/no_picture.png"></image>
+        </block>
+      </view>
+    </view>
+    <view>
+      <view class="lh80 plr24 col9">房源概况</view>
+      <view class='bw plr24 ptb30'>
+        {{msg.introduce}}
+      </view>
+      <view class="pl24 bw pt20 font0">
+        <block wx:if="{{msg.lispic.length>0}}" wx:for="{{msg.lispic}}" wx:for-item="item">
+          <image class="pic" src="{{item}}"></image>
+        </block>
+         <block wx:if="{{msg.lispic.length==0}}">
+          <image class="pics" src="../../img/no_picture.png"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="flex lh90 tac colw">
+    <view class='flex1 bgc1 btn_tap' bindtap='edit'>编辑</view>
+    <view class='flex1 bgc2 btn_tap2' bindtap='delete' data-id='{{msg.id}}'>删除</view>
+  </view>
+</view>

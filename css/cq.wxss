@@ -1,0 +1,248 @@
+/* 背景颜色 */
+page{
+  background: #f5f5f5;
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 28rpx;
+}
+.yel{
+  color: #ff9900;
+}
+.red{
+  color: #ff8888;
+}
+.green{
+  color: #2fdba0;
+}
+.blod{
+  font-weight: bold;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
+/* 对勾选中 */
+.selectYes{
+  color: #00a5ff;
+}
+.selectYes  .selectYesImg{
+  visibility: visible;
+}
+
+/* 首页-商品列表样式 */
+.contion{
+  flex: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.index-content{
+  margin-top:20rpx;
+  background-color: #fff;
+  padding: 0 20rpx;
+  color: #999;
+
+
+}
+.shop{
+  padding: 26rpx;
+  display: flex;
+  border-top: 1px solid #e5e5e5
+}
+.shop_img image{
+  width: 199rpx;
+  height: 128rpx
+}
+.shop_text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  margin-left: 26rpx;
+}
+.shop_text_name{
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+.shop_text_money{
+  font-size: 24rpx
+}
+.shop_text_pay{
+  font-size: 24rpx
+}
+.shop_address{
+  margin-top: 50rpx;
+  font-size: 26rpx;
+}
+.shop_address image{
+  width: 20rpx;
+  height: 25rpx;
+  margin-right: 12rpx;
+}
+.shop_color{
+  color: #ffb400;
+  margin-left: 10rpx;
+}
+/* 房产——首页搜索 */
+.search_top{
+  padding: 20rpx;
+  background-color: #91d3f7;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.search_img{
+  width: 21rpx;
+  height: 11rpx;
+  margin-left: 19rpx;
+}
+.search_btn{
+  flex: 1;
+  border-radius: 8rpx;
+  background: #fff;
+  height: 60rpx;
+  line-height: 60rpx;
+  color:#333;
+  padding-left: 80rpx;
+
+}
+.serach_top_img{
+  width: 34rpx;
+  height: 34rpx;
+  position: absolute;
+  top: 34rpx;
+  left: 44rpx;
+}
+/* 物业首页顶部——通用 */
+.Property image{
+  height: 430rpx;
+  width: 100%;
+  z-index: -1;
+}
+.Property_banner{
+  position: relative;
+  margin-top: -109rpx;
+  height: 109rpx;
+  background: rgba(19, 19, 19, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  z-index: 999;
+}
+.money{
+  margin-left: 101rpx;
+}
+.number{
+  display: block;
+  width: 164rpx;
+  height: 60rpx;
+  background: #00a5ff;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+.Mortgage{
+  display: flex;
+  flex: 1;
+  justify-content:flex-end;
+}
+/* 周边解读 */
+.Per{
+  margin-top: 20rpx;
+  padding:0 20rpx;
+  background: #fff;
+
+}
+.periphery{
+  display: flex;
+  overflow-x: scroll;
+  padding: 20rpx;
+}
+.periphery_title{
+  line-height: 100rpx;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 28rpx;
+  font-weight: bold
+}
+
+.periphery_cont{
+  direction: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-right: 80rpx;
+}
+.periphery_cont view{
+  margin-top: 20rpx;
+}
+.periphery_cont image{
+  width: 78rpx;
+  height: 78rpx;
+}
+/* 底部 */
+.footer{
+  height: 88rpx;
+  border-top: 1px solid #e5e5e5;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}
+.whole{
+  background: #91d3f7;
+  width: 300rpx;
+  flex: 3;
+  text-align: center;
+  line-height: 88rpx;
+  color: #fff;
+  font-size: 30rpx;
+}
+.footer_text{
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  margin-left: 24rpx;
+}
+.footer_address{
+  margin-top: 10rpx;
+}
+/* 详细信息 */
+.classSelect{
+  display: inline-block;
+  width: 123rpx;
+  text-align: left;
+}
+.blod{
+  color: #333;
+}
+.selectText text.true{
+  background: #91d3f7;
+  color: #fff;
+  border-color: #91d3f7
+
+}
+.tip {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  color: #999;
+  padding: 0 34rpx;
+  padding-top: 36rpx;
+  box-sizing: border-box;
+}
+
+.tip image {
+  width: 170rpx;
+  height: 218rpx;
+}

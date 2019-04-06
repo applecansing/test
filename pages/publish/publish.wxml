@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="pos_r">
+        <image src="../../img/bg0.png" class="publish_bg"></image>
+        <view class="pos_a plr24 nav tac">
+            <view class="bw flex border-r1">
+                <navigator url="/pages/publish_sale/sale" class="flex1 ptb60">
+                    <image src="../../img/ico23.png" style="width: 64rpx;height: 64rpx;"></image>
+                    <view class="mt20">出售</view>
+                </navigator>
+                <view class='line_x'></view>
+                <navigator url="/pages/publish_rent/rent" class="flex1 ptb60">
+                    <image src="../../img/ico24.png" style="width: 64rpx;height: 64rpx;"></image>
+                    <view class="mt20">出租</view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,22 @@
+/* pages/b_phone/b_phone.wxss */
+@import '../../css/zy_common.wxss';
+.active{
+  background: #ccc;
+}
+.gaiPhone>view +view{
+  border-top: 1px solid #e5e5e5;
+}
+.gaiPhone input{
+  font-size: 30rpx;
+  color: #333;
+  flex: 1;
+}
+.yzmBtn{
+  width: 200rpx;
+  font-size: 28rpx;
+  background: #a0c2f0;
+  color: white;
+  border-radius: 44rpx;
+  -webkit-border-radius: 44rpx;
+  margin: 0;
+}

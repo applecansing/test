@@ -1,0 +1,15 @@
+/* pages/address/address.wxss */
+@import '../../css/zy_common.wxss';
+.radio{
+  display: block;
+  height: 108rpx;
+  line-height: 108rpx;
+  background: #fff;
+  padding-left: 24rpx;
+}
+.radio-group label + label{
+  border-top: 1px solid #e5e5e5;
+}
+.confirm{
+  margin: 120rpx auto;
+}

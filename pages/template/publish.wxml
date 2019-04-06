@@ -1,0 +1,184 @@
+<!--发布房源，修改房源表单，公用-->
+<template name="new_house">
+  <form bindsubmit="formSubmit">
+    <view>
+      <view class="flex_a pr24 bw lh100">
+        <text class="name tac">标 题</text>
+        <view class="bdb h100 flex1 flex_a">
+          <input type="text" placeholder="请输入标题" class="h100 flex1" value='{{msg.title}}' name='title' />
+        </view>
+      </view>
+      <view class="flex_a pr24 bw lh100">
+        <text class="name tac">{{(msg.type==3 || msg.type==4)?'租 金':'单价'}}</text>
+        <view class="bdb h100 flex1 flex_a">
+          <input type="number" placeholder="请输入.." class="h100 flex1" value='{{msg.price>0?msg.price:""}}' name='price' />
+          <text>元<text class='color2 ml20' wx:if='{{msg.type==1 || msg.type==2 || msg.type==5}}'>(非必填项)</text></text>
+        </view>
+      </view>
+    </view>
+    <picker mode="multiSelector" bindchange="house_type" value="{{house_msg.house_type_index}}" range="{{house_msg.house_type}}" range-key="{{'name'}}">
+      <view class="picker flex_sb pr24 bw lh100">
+        <text class="name tac">房 型</text>
+        <view class="h100 flex1 flex_a jce">
+          <input type="hidden" hidden value='{{(house_msg.house_type_index[0]*1+1)+","+(house_msg.house_type_index[1]*1)+","+(house_msg.house_type_index[2]*1)}}' name='room' />
+          <text>{{house_msg.house_type[0][house_msg.house_type_index[0]].name}}{{house_msg.house_type[1][house_msg.house_type_index[1]].name}}{{house_msg.house_type[2][house_msg.house_type_index[2]].name}}</text>
+          <view class="triangle"></view>
+        </view>
+      </view>
+    </picker>
+    <picker bindchange="building" value="{{house_msg.build_index}}" range="{{house_msg.build}}" range-key="{{'title'}}">
+      <view class="picker flex_sb pr24 bw lh100">
+        <text class="name tac">建筑类型</text>
+        <view class="h100 flex1 flex_a jce bdt">
+          <input type="hidden" hidden value="{{house_msg.build[house_msg.build_index].id}}" name='house_type_id' />
+          <text>{{house_msg.build[house_msg.build_index]?house_msg.build[house_msg.build_index].title:'请选择建筑类型'}}</text>
+          <view class="triangle"></view>
+        </view>
+      </view>
+    </picker>
+    <picker wx:if="{{msg.type == 1}}" bindchange="state" value="{{house_msg.state_index}}" range="{{house_msg.state}}" range-key="{{'name'}}">
+      <view class="picker flex_sb pr24 bw lh100 mb20">
+        <text class="name tac">状 态</text>
+        <view class="h100 flex1 flex_a jce bdt">
+          <input type="hidden" hidden value="{{house_msg.state_index=='0,0,0'?'':(house_msg.state_index*1+1)}}" name='house_status' />
+          <text>{{house_msg.state[house_msg.state_index]?house_msg.state[house_msg.state_index].name:'请选择'}}</text>
+          <view class="triangle"></view>
+        </view>
+      </view>
+    </picker>
+    <view class="flex_a pr24 bw lh100 mt20" wx:if="{{msg.type==1 || msg.type==2 || msg.type==5}}">
+      <text class="name tac">售 价</text>
+      <view class="h100 flex1 flex_a {{(msg.type==1 || msg.type==2 || msg.type==5)?'bdb':''}}">
+        <input type="digit" placeholder="请输入售价" class="h100 flex1" value='{{msg.totalprice}}' name="totalprice" />
+        <text>万元</text>
+      </view>
+    </view>
+    <view class="flex_a pr24 bw lh100 {{(msg.type==3 || msg.type==4)?'mt20':''}}">
+      <text class="name tac">面积</text>
+      <view class="h100 flex1 flex_a">
+        <input type="number" placeholder="请输入面积" class="h100 flex1" value='{{msg.areas}}' name="areas" />
+        <text>m²</text>
+      </view>
+    </view>
+    <view class="flex_a pr24 bw lh100 mt20">
+      <text class="name tac">小 区</text>
+      <view class="bdb h100 flex1 flex_a">
+        <input type="text" placeholder="请输入小区名称" class="h100 flex1" value='{{msg.village}}' name="village" />
+      </view>
+    </view>
+    <picker bindchange="area" value="{{house_msg.area_index}}" range="{{house_msg.area}}" range-key="{{'name'}}">
+      <view class="picker flex_sb pr24 bw lh100">
+        <text class="name tac">区 域</text>
+        <view class="h100 flex1 flex_a jce bdb">
+          <input type="hidden" hidden value="{{house_msg.area[house_msg.area_index].area_id}}" name='area_id' />
+          <text>{{house_msg.area[house_msg.area_index]?house_msg.area[house_msg.area_index].name:'请选择小区区域'}}</text>
+          <view class="triangle"></view>
+        </view>
+      </view>
+    </picker>
+    <!-- <view class="flex_a pr24 bw lh100">
+      <text class="name tac">地 址</text>
+      <view class="h100 flex1 flex_a {{msg.type==1?'bdb':''}}">
+        <input type="text" placeholder="请输入详细地址" class="h100 flex1" value='{{msg.address}}' name="address"/>
+      </view>
+    </view> -->
+    <view class="h100 flex_aj bw" wx:if="{{msg.type == 1}}">
+      <view class="map border1 flex_aj tap color1 {{house_msg.lat?'active':''}}" bindtap='find'>
+        <image src="{{house_msg.lat?'../../img/ico18.png':'../../img/ico26.png'}}" style="width: 28rpx;height: 36rpx;"></image>
+        <text class="ml10">地图找房</text>
+      </view>
+    </view>
+    <picker mode="multiSelector" bindchange="floor" value="{{house_msg.floor_index}}" range="{{house_msg.floor}}" range-key="{{'name'}}">
+      <view class="picker flex_sb pr24 bw lh100 mt20">
+        <text class="name tac">楼 层</text>
+        <view class="h100 flex1 flex_a jce bdb">
+          <input type="hidden" hidden value="{{house_msg.floor[0][house_msg.floor_index[0]].name+'('+house_msg.floor[1][house_msg.floor_index[1]].name +')'}}" name='floor' />
+          <text>{{house_msg.floor[0][house_msg.floor_index[0]].name}} {{house_msg.floor[1][house_msg.floor_index[1]].name}}</text>
+          <view class="triangle"></view>
+        </view>
+      </view>
+    </picker>
+    <picker bindchange="decorate" value="{{house_msg.decorate_index}}" range="{{house_msg.decorate}}" range-key="{{'title'}}">
+      <view class="picker flex_sb pr24 bw lh100">
+        <text class="name tac">装 修</text>
+        <view class="h100 flex1 flex_a jce bdb">
+          <input type="hidden" hidden value="{{house_msg.decorate[house_msg.decorate_index].id}}" name='direction_type_id' />
+          <text>{{house_msg.decorate[house_msg.decorate_index]?house_msg.decorate[house_msg.decorate_index].title:'请选择装修方式'}}</text>
+          <view class="triangle"></view>
+        </view>
+      </view>
+    </picker>
+    <!-- <view class="flex_a pr24 bw lh100">
+      <text class="name tac">年 代</text>
+      <view class="bdb h100 flex1 flex_a">
+        <input type="number" placeholder="请输入年代" class="h100 flex1" value='{{msg.years}}' name="years"/>
+        <text>年</text>
+      </view>
+    </view> -->
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">联系人</text>
+      <view class="bdb h100 flex1 flex_a">
+        <input type="text" placeholder="请输入联系人" class="h100 flex1" value='{{msg.owner}}' name="owner" />
+      </view>
+      <picker bindchange="identity" value="{{house_msg.state_index*1+1}}" range="{{house_msg.identity}}" range-key="{{'name'}}">
+        <view>
+          <view class="h100 flex1 flex_a jce bdb">
+            <input type="hidden" hidden value="{{house_msg.identity_index*1+1}}" name='is_type' />
+            <text>{{house_msg.identity[house_msg.identity_index]?house_msg.identity[house_msg.identity_index].name:'请选择'}}</text>
+            <view class="triangle"></view>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class="flex_a pr24 bw lh100">
+      <text class="name tac">联系电话</text>
+      <view class="h100 flex1 flex_a">
+        <input type="text" placeholder="请输入联系电话" class="h100 flex1" value='{{msg.phone}}' name="phone" />
+      </view>
+    </view>
+    <view>
+        <view>
+      <view class="lh80 plr24 col9">上传主图</view>
+      <view class="pl24 bw pt20 font0 clearfix">
+        <block wx:if="{{indexpic}}">
+          <view class='pic_wrap'>
+            <image class="pic" src="{{indexpic}}"></image>
+          </view>
+        </block>
+        <view class='pic_wrap' bindtap='choice' data-type='1'>
+          <image class="pic" src="../../img/ico25.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class='dl'>
+    <view class='dt'>上传视频：</view>
+    <view class='dd'>
+        <view bindtap="chooseVideo" class='blogputbtn'> 选择视频</view>
+        <video id='myvideo' src="{{src}}" class="video"></video>
+    </view>
+  </view>
+    </view>
+    <view>
+      <view class="lh80 plr24 col9">房源概况</view>
+      <view class='bw plr24 ptb30'>
+        <textarea placeholder="请输入房源概况" class='w100 text' value='{{msg.introduce}}' name="introduce" />
+      </view>
+      <view class="pl24 bw pt20 font0 clearfix">
+        <block wx:if="{{lispic.length>0}}" wx:for="{{lispic}}">
+          <view class='pic_wrap'>
+            <image class="pic" src="{{item}}"></image>
+            <view class='delete flex_aj font12 colw' bindtap='indexpic_delete' data-index='{{index}}'>X</view>
+          </view>
+        </block>
+        <view class='pic_wrap' bindtap='choice' data-type='2'>
+          <image class="pic" src="../../img/ico25.png"></image>
+        </view>
+      </view>
+    </view>
+    <input type="hidden" hidden value='{{house_msg.lat}}' name='lat' />
+    <input type="hidden" hidden value='{{house_msg.lng}}' name='lng' />
+    <button class="colw h90 flex_aj bgc1 footer btn_tap" formType="submit">
+      <text class="ml20 font15">提交</text>
+    </button>
+  </form>
+</template>

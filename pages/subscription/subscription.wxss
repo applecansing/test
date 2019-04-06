@@ -1,0 +1,68 @@
+/* pages/subscription/subscription.wxss */
+@import '../../css/zy_common.wxss';
+
+.bgImg image {
+  width: 100%;
+  height: 345rpx;
+}
+
+.location {
+  width: 24rpx;
+  height: 30rpx;
+}
+
+.subListBox {
+  position: relative;
+  top: -90rpx;
+  left: 0;
+  padding-bottom: 150rpx;
+}
+
+.subListBox>view + view {
+  margin-top: 20rpx;
+}
+
+.subList {
+  border-radius: 15rpx;
+  -webkit-border-radius: 15rpx;
+  box-shadow: 0rpx 0rpx 10rpx #ccc;
+}
+
+.btnBox view {
+  display: inline-block;
+  background: #4abfff;
+  color: white;
+  padding: 8rpx 18rpx;
+  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+  margin-bottom: 30rpx;
+  margin-right: 20rpx;
+}
+
+.editBox {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editBox view {
+  width: 100rpx;
+  text-align: center;
+}
+
+.editBox image {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.editBox>view {
+  padding: 35rpx 0;
+}
+
+.confirm {
+  width: 40%;
+  position: fixed;
+  bottom: 40rpx;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}

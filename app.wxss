@@ -1,0 +1,33 @@
+.button-hover[type="primary"]{
+  color: rgba(255,255,255,0.6);
+  background: #3190fa;
+}
+.tap1:active{
+  color: rgba(255,255,255,0.6);
+  background: #3190fa;
+}
+.tap2:active{
+  color: rgba(0,0,0,0.1);
+  opacity: 0.7;
+}
+.tap3:active{
+  background: rgba(236, 236, 236, 1) ;
+}
+.arrow{
+  background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAXCAMAAADneDWzAAAAXVBMVEUAAAC6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urp6dQh5AAAAHnRSTlMAB3fozKmdN+XStJaKYlZAIuDcwr+xonBcSSMgFAy8BSRaAAAAZUlEQVQY003OSxKDIBQFURAUNdGYf+Kn979MZ1QzO8Wruh2GLui1tOaXRxQn+lUscBO3xCzGgUYMby7mlafZkL30J/t3xKcoueOjek3ErPn9zlSxOLtAqZhJS8WPdKj2pbx+VM4JKxQFLKEeGgwAAAAASUVORK5CYII=") no-repeat right center/auto 30%;
+}
+
+.tip {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  color: #999;
+  padding: 0 34rpx;
+  padding-top: 36rpx;
+  box-sizing: border-box;
+}
+
+.tip image {
+  width: 200rpx;
+  height: 248rpx;
+}

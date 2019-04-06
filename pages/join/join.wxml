@@ -1,0 +1,10 @@
+<!--pages/join/join.wxml-->
+<view class='pt20'>
+  <view class='ptb30 plr24 bgc border-b'>
+    <input type='text' class='font15 col3' placeholder='请输入您的姓名' value='' bindinput='name'></input>
+  </view>
+  <view class='ptb30 plr24 bgc'>
+    <input type='number' class='font15 col3' placeholder='请输入您的联系方式' value='' bindinput='phone'></input>
+  </view>
+</view>
+<button disabled="{{disabled}}"  class="confirm" loading="{{loading}}"  hover-class="active" bindtap="baocun" style='margin-top:120rpx;'>提交</button>

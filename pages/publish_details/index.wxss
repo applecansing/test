@@ -1,0 +1,19 @@
+@import '../../css/main.wxss';
+page{
+  width: 100%;
+  height: 100%;
+}
+.name{
+    width: 150rpx;
+}
+image.pic{
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+    margin-right: 14rpx;
+}
+.pics{
+  width: 200rpx;
+  height: 150rpx;
+}

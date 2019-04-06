@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="ptb30 plr24">
+    <view class="font16">{{details.title}}</view>
+    <view class="font14 col9 mt10">{{details.f_time}}</view>
+  </view>
+  <view class="plr24 font0">
+    <block wx:for='{{details.news_img}}' wx:for-item="imgs">
+      <image src="{{imgs}}" class="pic"></image>
+    </block>
+  </view>
+  <view class="content plr24 ptb20">
+    {{details.content}}
+  </view>
+</view>

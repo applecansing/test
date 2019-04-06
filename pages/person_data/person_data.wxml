@@ -1,0 +1,45 @@
+<!--pages/person_data/person_data.wxml-->
+<view class='personBox'>
+  <view class='LR-block plr24 ptb20 font15'>
+    <text class='col3'>头像</text>
+    <picker class='flex1' bindchange='uploadimg' value='{{index1}}' range='{{arraytype}}'>
+      <view class='flex-ac flex-je'>
+        <image src='{{header_img}}' class='user mr20'></image>
+        <image src='../../img/arrow_right.png' class='arrow_right'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='LR-block plr24 ptb35 font15' bindtap='gaiName'>
+    <text class='col3'>昵称</text>
+    <view class='flex-ac'>
+      <text class='mr20 col9'>{{nickname}}</text>
+      <image src='../../img/arrow_right.png' class='arrow_right'></image>
+    </view>
+  </view>
+  <view class='flex-ac bgc plr24 font15'>
+    <text class='col3'>性别</text>
+     <picker class='flex1' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class='flex-ac flex-je sex'>
+          <text class='mr20 col9'>{{array[index]}}</text><image src="../../img/arrow_right.png" class="arrow_right"></image>
+        </view>
+      </picker>
+  </view>
+    <view class='LR-block plr24 ptb35 font15' bindtap='b_phone'>
+    <text class='col3'>手机号</text>
+    <view class='flex-ac'>
+      <text class='mr20 col9'>{{mobile?mobile:'未绑定'}}</text>
+      <image src='../../img/arrow_right.png' class='arrow_right'></image>
+    </view>
+  </view>
+</view>
+		<!--修改昵称弹窗-->
+		<view class="mask" wx-if="{{mask}}"></view>
+		<view class="gaiNameWin" wx-if="{{status}}">
+			<view class="gaiNameBox">
+				<view class="font16 tac col3">修改昵称</view>
+				<view class="border-b pt20"><input type="text" class="user_name font16"  placeholder="请输入昵称" value=""  bindinput='nameInput'/></view>		
+			</view>
+			<view class="confirm_chose flex colw">
+				<text class="bg3" bindtap='close'>取消</text><text class="bg1" bindtap='confirm'>确定</text>	
+			</view>
+		</view>

@@ -1,0 +1,111 @@
+<view class="{{is_vip=='2'?'container':''}}">
+  <view class='pic_box pos_r'>
+    <swiper autoplay="true" circular="true" interval="4000" duration="1000" indicator-dots='true' style="height:480rpx;">
+      <block wx:for="{{details.lispic}}">
+        <swiper-item class="flex-center">
+          <image src="{{item}}" class='pic' bindtap='previewImage' data-url='{{item}}'/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <block wx:if="{{empty}}">
+      <image src='{{details.indexpic}}' class="pic" bindtap='previewImage' data-url='{{details.indexpic}}'></image>
+    </block> -->
+    <block wx:if="{{!empty}}">
+      <image class="pics" src="../../img/no_picture.png" class="pic"></image>
+    </block>
+    <button open-type="share" class="share">
+      <image src="../../img/ico19.png" class="ico pos_a" style='width:34rpx;' mode='widthFix'></image>
+    </button>
+    <view class='share collect' bindtap='collect'>
+      <image src="../../img/ic_like.png" class="ico pos_a" style='width:34rpx;' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class="plr24 bw ptb20">
+    <view class="font16">{{details.title}}</view>
+    <view class="col9 mt10">{{details.ctime}}</view>
+  </view>
+  <view class="ptb30 bw mt20 flex tac">
+    <view class="flex1">
+      <view class="font13 col9">{{(details.type==3 || details.type==4)?'租金':'售价'}}</view>
+      <view class="color2 font15 mt10">{{(details.type==3 || details.type==4)?details.price|Int:details.totalprice}}{{(details.type==3 || details.type==4)?'/月':'万'}}</view>
+    </view>
+    <view class="flex1 bdl">
+      <view class="font13 col9">房型</view>
+      <view class="color2 font15 mt10">{{details.layout_s}}室{{details.layout_t}}厅{{details.layout_c}}卫</view>
+    </view>
+    <view class="flex1 bdl">
+      <view class="font13 col9">面积</view>
+      <view class="color2 font15 mt10">{{details.areas}}m²</view>
+    </view>
+  </view>
+  <!--简介-->
+  <view class="plr24 bw mt20">
+    <view class="h100 flex_a bdb">
+      <image src="../../img/ico20.png" style="width: 32rpx;height: 34rpx;"></image>
+      <text class="ml20">简介</text>
+    </view>
+    <view class="ptb20 lh40">
+      <view class="clearfix">
+        <view class="fl flex attrs" wx:if="{{details.type==1 || details.type==2 || details.type==5}}">
+          <text class="name col9">单价</text>
+          <text class="flex1">{{details.price}}元/m²</text>
+        </view>
+        <view class="fl flex attrs" wx:if='{{details.floor}}'>
+          <text class="name col9">楼层</text>
+          <text class="flex1">{{details.floor}}</text>
+        </view>
+        <view class="fl flex attrs" wx:if='{{details.name}}'>
+          <text class="name col9">装修</text>
+          <text class="flex1">{{details.name}}</text>
+        </view>
+        <view class="fl flex attrs" wx:if='{{details.house_type_name}}'>
+          <text class="name col9">类型</text>
+          <text class="flex1">{{details.house_type_name}}</text>
+        </view>
+        <view class="fl flex attrs" wx:if='{{details.years}}'>
+          <text class="name col9">年代</text>
+          <text class="flex1">{{details.years}}年</text>
+        </view>
+        <view class="fl flex attrs" wx:if='{{details.owner}}'>
+          <text class="name col9">联系人</text>
+          <text class="flex1">{{details.owner}}({{details.is_type_name}})</text>
+        </view>
+        <view class="fl flex attrs" wx:if='{{details.phone}}'>
+          <text class="name col9">电话</text>
+          <text class="flex1">{{details.phone}}</text>
+        </view>
+        <view class="fl flex attrs" wx:if='{{details.village}}'>
+          <text class="name col9">小区</text>
+          <text class="flex1">{{details.village}}</text>
+        </view>
+        <view class="fl flex attrs" wx:if='{{details.address}}'>
+          <text class="name col9">地址</text>
+          <text class="flex1">{{details.address}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mt20 bw">
+    <view class="h100 flex_a bdb plr24">
+      <image src="../../img/ico32.png" style="width: 32rpx;height: 34rpx;"></image>
+      <text class="ml20">房源概况</text>
+    </view>
+    <view class="ptb20">
+      <view class='plr24'>{{details.introduce}}</view>
+      <view class='mt20'>
+        <block wx:if="{{details.lispic.length>0}}">
+          <view class='details_img' wx:for="{{details.lispic}}" wx:for-item='item'>
+            <image src='{{item}}' class='pic' bindtap='previewImage' data-url='{{item}}'></image>
+          </view>
+        </block>
+        <block wx:if="{{details.lispic.length==0}}">
+          <image src='../../img/no_picture.png' class='pic'></image>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{is_vip=='2'}}" class="colw h100 flex_aj bgc1 footer btn_tap" bindtap='call'>
+  <image src="../../img/ico22.png" style="width: 36rpx;height: 36rpx;"></image>
+  <text class="ml20 font15">立即咨询</text>
+</view>

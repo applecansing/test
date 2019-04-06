@@ -1,0 +1,113 @@
+@import '../../css/main.wxss';
+.classify{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+.container{
+    padding-top: 120rpx;
+    padding-bottom: 90rpx;
+}
+.classify_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.classify_item.active text{
+    display: block;
+    width: 176rpx;
+    height: 60rpx;
+    line-height:60rpx;
+    background: #91b1db;
+    border-radius: 40rpx;
+}
+.name{
+    width: 150rpx;
+}
+.triangle{
+    width:0;
+    height:0;
+    border-width:14rpx;
+    border-style:solid;
+    border-color:#ccc transparent transparent transparent;
+    margin-top:20rpx;
+    margin-left:20rpx;
+}
+.pic_wrap {
+  position: relative;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  margin-right: 14rpx;
+  overflow: hidden;
+  float: left;
+}
+.pic_wrap .delete{
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: rgba(0,0,0,.5);
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+image.pic {
+  width: 100%;
+  height: 100%;
+}
+.text{
+  height: 290rpx;
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.map{
+    width: 240rpx;
+    height: 64rpx;
+    border-radius: 40rpx;
+}
+.order_txt{ width:100%;  min-height:54rpx; background:#fff; margin-bottom:14.4rpx; margin-top: 3.6rpx;}
+.order_txt .dl{ display:block; width:100%; border-bottom: solid 1.8rpx #f5f5f5;  padding:14.4rpx 2.5%; box-sizing: border-box; padding-left: 198rpx; min-height:54rpx; position: relative;  clear:both; overflow: hidden;}
+.order_txt .dl .dt{ width:180rpx;  display:block; height:54rpx; line-height:54rpx; position: absolute; left: 0px; top: 14.4rpx; text-align: right; font-size: 25.2rpx; color: #666;}
+.order_txt .dl .dd{ width:100%; display:block; min-height:54.4rpx; line-height:54.4rpx;}
+.order_txt .dl .dd .data_put{ width: 100%; height: 54.4rpx; line-height: 54.4rpx; border: none;}
+.order_txt .dl .dd textarea{ width: 100%; box-sizing: border-box; border:solid 1px #eee; height: 144rpx; padding: 9rpx; line-height: 37.8rpx; color: #999; display: block;}
+.order_txt .dl .dd text{ color: #f00;}
+
+.order_txt_btn{ width: 100%; padding-top: 36rpx;}
+.order_txt_btn .theory_btn{ height: 72rpx; width: 90%;font-size: 32.4rpx; margin: 0 auto; display: block; font-weight: normal; line-height: 72rpx; border-radius:5.4rpx;border:none;background: #00B5A4; color: #fff; }
+.blogputbtn{ width: 180rpx; height: 45rpx; margin-top: 5.4rpx; border:0; background: #ff3b3b; color: #fff; text-align: center; line-height: 45rpx;}
+
+.video{ width: 80%; display: block; height: 350rpx; margin-top: 20rpx; margin-left:40px;}
+
+.pro_wz_gr_text_img{ width:95%; height: auto; padding: 2.5%; overflow: hidden; background: #fff;}
+.upload_Item{ width: 49%; margin-right: 1%; height: 180rpx; flex: 1; overflow: hidden; border-radius: 30rpx;} 
+.upload_Item_img{ width: 100%;}
+.uploadWrap{height:180rpx; width:100%; display: flex; display: -webkit-box; flex-direction: column;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

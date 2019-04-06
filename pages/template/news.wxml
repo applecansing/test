@@ -1,0 +1,20 @@
+<template name="news">
+  <view class="ptb30 plr24 font0 bw">
+    <swiper autoplay="true" circular="true" interval="4000" duration="1000" indicator-dots='true' style='height:400rpx;'>
+      <block wx:for="{{news.news_pic}}">
+        <swiper-item class="flex-center">
+          <image src="{{item}}" class='pic' bindtap='previewImage' data-url='{{item}}'/>
+        </swiper-item>
+      </block>
+    </swiper>
+    </view>
+    <view class="content plr24 pb20 bw font16" style='line-height:50rpx;'>
+        {{news.content}}
+    </view>
+    <view class="plr60 mt50" style='margin-bottom:50rpx'>
+        <view class="colw h90 flex_aj bgc1 footer btn_tap border-r6" bindtap='call'>
+            <image src="../../img/ico22.png" style="width: 36rpx;height: 36rpx;"></image>
+            <text class="ml20 font15">立即咨询</text>
+        </view>
+    </view>
+</template>

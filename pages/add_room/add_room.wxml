@@ -1,0 +1,45 @@
+<!--pages/add_room/add_room.wxml-->
+<view class='mt20'>
+  <view class='addressBox bgc mlr24'>
+    <view class="font15 col9 tac">
+      <image src='../../img/location.png' class='location mr20'></image>期望地点(可选3个)</view>
+    <view class='btnBox font14 flex-jc'>
+      <block wx:for="{{addrVal}}" wx:for-index="idx">
+        <view>{{item}}
+          <image src='../../img/close.png' class='close' bindtap='close' data-idx='{{idx}}'></image>
+        </view>
+      </block>
+      <view bindtap='add_area' wx:if="{{hidden}}">+</view>
+    </view>
+  </view>
+</view>
+<view>
+  <view class='list LR-block mlr24 font15' bindtap='add_room1'>
+    <view class='col9'>
+      <image src='../../img/room_sum.png' class='listImg mr20'></image>{{(type==1 || type==2)?type1Arr[0]:type==5?type1Arr[2]:type1Arr[1]}}</view>
+    <view class='col3'>{{sumVal}}
+      <image src='../../img/arrow_right.png' class='arrow_right ml20'></image>
+    </view>
+  </view>
+  <view class='list LR-block mlr24 font15' bindtap='add_room2'>
+    <view class='col9'>
+      <image src='../../img/rooms.png' class='listImg mr20'></image>{{(type==4 || type==5)?type2Arr[1]:type2Arr[0]}}</view>
+    <view class='col3'>{{expectVal}}
+      <image src='../../img/arrow_right.png' class='arrow_right ml20'></image>
+    </view>
+  </view>
+  <picker bindchange="identity" value="{{state_index*1+1}}" range="{{identity}}" range-key="{{'name'}}" class='mt20 font15'>
+    <view class='LR-block mlr24 ptb20 plr24 col9' style='border-radius:10rpx;border:1px solid #e5e5e5;'>
+      <view>来源</view>
+      <view class="h100 flex_a jce bdb">
+        <input type="hidden" hidden value="{{identity_index*1+1}}" name='is_type' />
+        <text>{{identity[identity_index]?identity[identity_index].name:'请选择'}}</text>
+        <image src='../../img/arrow_right.png' class='arrow_right ml20'></image>
+      </view>
+    </view>
+  </picker>
+</view>
+<view class='LR-block bgc mlr24 ptb20 pl30 pr20 subBox'>
+  <view class='col3 font15'>最近有{{count}}套新房源</view>
+  <button class='subBtn' bindtap='subscribe' disabled='{{disabled}}'>立即订阅</button>
+</view>

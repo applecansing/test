@@ -1,0 +1,30 @@
+ <view class="container">
+  <view class="list">
+    <block wx:for='{{news}}' wx-if='{{empty}}'>
+      <navigator url="/pages/headlines_details/details?news_id={{item.news_id}}" class="list_item" wx:if='{{item.news_img.length<2}}'>
+        <view class="lh100 plr24 font17">{{item.title}}</view>
+        <view class="font0">
+          <block wx:for="{{item.news_img}}" wx:for-item="imgs">
+            <image src="{{imgs}}" class="pic"></image>
+          </block>
+        </view>
+        <view class="lh80 col9 plr24 bw font17">{{item.f_time}}</view>
+      </navigator>
+      <navigator url="/pages/headlines_details/details?news_id={{item.news_id}}" class="list_item" wx:else>
+        <view class="lh100 plr24 font17">{{item.title}}</view>
+        <view class="pl24">
+          <block wx:for="{{item.news_img}}" wx:for-item="imgs">
+            <image class="pic_min" src="{{imgs}}"></image>
+          </block>
+        </view>
+        <view class="lh80 col9 plr24 bw font17">{{item.f_time}}</view>
+      </navigator>
+    </block>
+  </view>
+</view>
+<block wx-if='{{!empty}}'>
+    <view class="tip">
+        <image src="../../img/empty.png"></image>
+        <text>暂无数据</text>
+    </view>
+</block>

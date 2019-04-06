@@ -1,0 +1,16 @@
+<!--pages/link_us/link_us.wxml-->
+<view class='imgBox ptb20 plr24'>
+<!-- <image src='{{about_img}}' bindtap='previewImage' data-url='{{about_img}}'></image> -->
+      <swiper autoplay="true" circular="true" interval="4000" duration="1000" indicator-dots='true' style='height:400rpx;'>
+      <block wx:for="{{about_img}}">
+        <swiper-item class="flex-center">
+          <image src="{{item}}" class='pic' bindtap='previewImage' data-url='{{item}}'/>
+        </swiper-item>
+      </block>
+    </swiper>  
+
+</view>
+<view class='LR-block ptb30 plr24 font16 col3' bindtap='call'>
+  <view>客服电话</view>
+  <view>{{phoneNumber}}</view>
+</view>

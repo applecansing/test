@@ -1,0 +1,4 @@
+<import src="../template/publish.wxml" />
+<view class="container">
+  <template is="new_house" data="{{house_msg,msg,indexpic,lispic,lispic_path}}"/>
+</view>

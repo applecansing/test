@@ -1,0 +1,15 @@
+@import '../../css/main.wxss';
+.pic{
+    width: 100%;
+}
+.pic_min{
+    width: 224rpx;
+    height: 148rpx;
+    margin-right: 14rpx;
+}
+.list_item{
+    background: #fff;
+}
+.list_item + .list_item{
+    margin-top: 10rpx;
+}

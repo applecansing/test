@@ -1,0 +1,78 @@
+/* index.wxss */
+@import '../../css/main.wxss';
+
+.header {
+  position: relative;
+  height: 180rpx;
+  border-radius: 0 0 30rpx 30rpx;
+  padding-top: 20rpx;
+}
+
+.search {
+  height: 60rpx;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 40rpx;
+}
+
+.h200 {
+  height: 200rpx;
+}
+
+.nav1 {
+  position: absolute;
+  left: 0;
+  bottom: -138rpx;
+  width: calc(100% - 48rpx);
+}
+
+.ad {
+  margin-top: 160rpx;
+  height: 120rpx;
+  background: #fff;
+}
+
+.list_item::before {
+  display: inline-block;
+  content: '';
+  width: 16rpx;
+  height: 16rpx;
+  background: #000;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.fc {
+  width: 130rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tt {
+  border: 1px solid #ff697e;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  width: 86rpx;
+  color: #ff697e;
+}
+
+.nav2_item {
+  float: left;
+  width: 33.3333%;
+  margin-bottom: 30rpx;
+}
+
+.city {
+  max-width: 86rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.messageBox{
+  height:120rpx;
+  max-height:120rpx;
+  overflow-y:hidden;
+ 
+}

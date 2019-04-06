@@ -1,0 +1,54 @@
+/* pages/center/center.wxss */
+@import '../../css/zy_common.wxss';
+
+.bgs {
+  width: 100%;
+  height: 780rpx;
+}
+
+.userBox {
+  width: 200rpx;
+  height: 200rpx;
+  /* border: 2rpx solid white; */
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  position: absolute;
+  top: 158rpx;
+  left: 50%;
+  margin-left: -100rpx;
+}
+
+.userBox image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border: 4rpx solid white;
+}
+
+.listBox {
+  width: 92%;
+  margin: 0 auto;
+  border-radius: 10rpx;
+  position: relative;
+  top: -80rpx;
+}
+
+.listBox navigator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 20rpx 0;
+}
+
+.listBox navigator image {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.listBox navigator text {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+}

@@ -1,0 +1,191 @@
+<template name="goods">
+  <block wx:for="{{goods}}" wx-if="{{empty}}">
+    <navigator url="/pages/house_details/details?id={{item.id}}" class='goods flex_a plr24 bw  {{index==0? "" :"vip-contentbor"}}'>
+      <view>
+        <block wx:if="{{item.indexpic}}">
+        <image src='{{item.indexpic}}' class='goods_pic'></image>
+        </block>
+        <block wx:else>
+          <image src='../../img/no_picture.png' class='goods_pic'></image>
+        </block>
+      </view>
+      <view class='goods_content'>
+        <view>
+          <view class='font15'>{{item.title}}</view>
+          <view class='mt10'>
+            <text class='attr color1'>{{item.areas}}m²</text>
+            <text class='attr color1'>{{item.layout_s}}室{{item.layout_t}}厅</text>
+          </view>
+          <view class='mt10 flex_a'>
+            <image class=' vip_image'src='https://jk.0759hn.com/Public/icon/vip.jpg' wx:if="{{isVip=='2'}}" data-id="{{item.id}}" id="{{ item.id }}" catchtap='showVipContent'></image>
+            <image src='../../img/ico18.png' class='goods_city'></image>
+            <text class='ml10 col9'>{{item.name}}</text>
+            <view wx:if="{{item.is_show == 0}}" catchtap='show' data-key='{{index}}' data-id='{{item.id}}' class='ml10 colred'>未展示</view>
+          </view>
+        </view>
+        <view class='color2'>￥{{(item.type==3 || item.type==4)?item.price|Int:item.totalprice}}{{(item.type==3 || item.type==4)?'/月':'万'}}</view>
+      </view>
+    </navigator>
+    <view wx:if="{{isVip=='2'}}" class='vip-content {{uhide==item.id? "" :"hidden"}}'>
+            <view class='ml20'>房号: {{ uhidea.layout_q }}</view> 
+            <view class='ml20'>业主电话: {{ uhidea.owner_phone }}</view>
+            <text>\n</text>
+            <view class='ml20' style="color:red;">底价: {{ uhidea.low_price }}</view>
+            <view class='ml20'>房屋来源: {{ uhidea.source}}</view>
+            <view style='width:100%;'>
+            <view class='item ellipsis' wx:if='{{uhidea.is_card==1}}'>
+          <image src='/img/true.png' style='height:28rpx;width:28rpx;' mode='widthFix'  class='ml20'></image>
+          <text>有证</text>
+        </view>
+        <view class='item ellipsis' wx:if='{{uhidea.is_year==1}}'>
+          <image src='/img/true.png' style='height:28rpx;width:28rpx;' mode='widthFix'  class='ml20'></image>
+          <text>满2年</text>
+        </view>
+        <view class='item ellipsis' wx:if='{{uhidea.is_sole==1}}'>
+          <image src='/img/true.png' style='height:28rpx;width:28rpx;' mode='widthFix'  class='ml20'></image>
+          <text>独家</text>
+        </view>
+        <view class='item ellipsis' wx:if='{{uhidea.is_key==1}}'>
+          <image src='/img/true.png' style='height:28rpx;width:28rpx;' mode='widthFix'  class='ml20'></image>
+          <text>有钥匙</text>
+        </view><view class='item ellipsis' wx:if='{{uhidea.is_furniture==1}}'>
+          <image src='/img/true.png' style='height:28rpx;width:28rpx;' mode='widthFix'  class='ml20'></image>
+          <text>送家具</text>
+        </view>
+        <view class='item ellipsis' wx:if='{{uhidea.is_agency==1}}'>
+          <image src='/img/true.png' style='height:28rpx;width:28rpx;' mode='widthFix'  class='ml20'></image>
+          <text>接受中介</text>
+        </view>
+         <view class='ml20' style='width:70%;'>备注
+          <text class='ml20 col9'>{{uhidea.remarks}}</text>
+        </view>
+         <view class="fr" wx:if="{{uhidea.house_status == 0}}" style="position:absolute;right:30rpx;margin-top:35px;" data-id="{{item.id}}" data-status="3" bindtap="markup">
+         标记已售 <image src="../../img/yishou.png" style="width:50rpx;height:50rpx;vertical-align:bottom"></image>
+      </view>
+      <view class="fr" wx:elif="{{uhidea.house_status == 3}}" style="position:absolute;margin-top:35px;right:30rpx;" data-status="0" bindtap="markup">
+         恢复房源 <image src="../../img/zaishou.png" style="width:50rpx;height:50rpx;vertical-align:bottom"></image>
+      </view>
+      </view>
+    </view>
+  </block>
+  <block wx-if='{{!empty}}'>
+    <view class="tip">
+        <image src="../../img/empty.png"></image>
+        <text class='font15'>{{history?'请搜索':'暂无数据'}}</text>
+    </view>
+</block>
+</template>
+<template name="goods2">
+  <block wx:for="{{goods}}" wx-if="{{empty}}">
+    <view class="goods_item plr24 bw">
+      <navigator url="/pages/publish_details/index?id={{item.id}}" class='goods flex_a bdb'>
+        <view>
+          <block wx:if="{{item.indexpic}}">
+            <image src='{{item.indexpic}}' class='goods_pic'></image>
+          </block>
+          <block wx:else>
+          <image src='../../img/no_picture.png' class='goods_pic'></image>
+          </block>
+        </view>
+        <view class='goods_content'>
+          <view>
+            <view class='font15'>{{item.title}}</view>
+            <view class='mt10'>
+              <text class='attr color1'>{{item.areas}}m²</text>
+              <text class='attr color1'>{{item.layout_s}}室{{item.layout_t}}厅</text>
+            </view>
+            <view class='mt10 flex_a'>
+              <image src='../../img/ico18.png' class='goods_city'></image>
+              <text class='ml10 col9'>{{item.name}}</text>
+            </view>
+          </view>
+          <view class='color2'>￥{{(item.type==3 || item.type==4)?item.price|Int:item.totalprice}}{{(item.type==3 || item.type==4)?'/月':'万'}}</view>
+        </view>
+      </navigator>
+      <view class="flex_sb h100 flex_a">
+        <view class="flex_a">
+          <image src="../../img/ico27.png" style="width:30rpx;height: 30rpx;"></image>
+          <text class="ml20 col9">{{item.ctime}}</text>
+        </view>
+        <view class="h100 flex_a">
+          <button open-type="share" class="h100 flex_aj plr20 tap" data-id="{{item.id}}">
+            <image src="../../img/ico28.png" style="width:32rpx;height: 34rpx;"></image>
+          </button>
+          <navigator url="/pages/publish_edit/index?id={{item.id}}&type={{item.type}}" class="h100 flex_aj plr20 tap">
+            <image src="../../img/ico29.png" style="width:34rpx;height: 34rpx;"></image>
+          </navigator>
+          <view class="h100 flex_aj plr20 tap" bindtap='delete' data-id="{{item.id}}" data-type="{{item.type}}">
+            <image src="../../img/ico30.png" style="width:34rpx;height: 34rpx;"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  
+  
+  
+  
+  <block wx-if='{{!empty}}'>
+    <view class="tip">
+        <image src="../../img/empty.png"></image>
+        <text class='font15'>{{history?'请搜索':'暂无数据'}}</text>
+    </view>
+</block>
+</template>
+<template name="goods2">
+  <block wx:for="{{goods}}" wx-if="{{empty}}">
+    <view class="goods_item plr24 bw">
+      <navigator url="/pages/publish_details/index?id={{item.id}}" class='goods flex_a bdb'>
+        <view>
+          <block wx:if="{{item.indexpic}}">
+            <image src='{{item.indexpic}}' class='goods_pic'></image>
+          </block>
+          <block wx:else>
+          <image src='../../img/no_picture.png' class='goods_pic'></image>
+          </block>
+        </view>
+        <view class='goods_content'>
+          <view>
+            <view class='font15'>{{item.title}}</view>
+            <view class='mt10'>
+              <text class='attr color1'>{{item.areas}}m²</text>
+              <text class='attr color1'>{{item.layout_s}}室{{item.layout_t}}厅</text>
+            </view>
+            <view class='mt10 flex_a'>
+              <image src='../../img/ico18.png' class='goods_city'></image>
+              <text class='ml10 col9'>{{item.name}}</text>
+            </view>
+          </view>
+          <view class='color2'>￥{{(item.type==3 || item.type==4)?item.price|Int:item.totalprice}}{{(item.type==3 || item.type==4)?'/月':'万'}}</view>
+        </view>
+      </navigator>
+      <view class="flex_sb h100 flex_a">
+        <view class="flex_a">
+          <image src="../../img/ico27.png" style="width:30rpx;height: 30rpx;"></image>
+          <text class="ml20 col9">{{item.ctime}}</text>
+        </view>
+        <view class="h100 flex_a">
+          <button open-type="share" class="h100 flex_aj plr20 tap" data-id="{{item.id}}">
+            <image src="../../img/ico28.png" style="width:32rpx;height: 34rpx;"></image>
+          </button>
+          <navigator url="/pages/publish_edit/index?id={{item.id}}&type={{item.type}}" class="h100 flex_aj plr20 tap">
+            <image src="../../img/ico29.png" style="width:34rpx;height: 34rpx;"></image>
+          </navigator>
+          <view class="h100 flex_aj plr20 tap" bindtap='delete' data-id="{{item.id}}" data-type="{{item.type}}">
+            <image src="../../img/ico30.png" style="width:34rpx;height: 34rpx;"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+
+
+
+  <block wx-if='{{!empty}}'>
+    <view class="tip">
+        <image src="../../img/empty.png"></image>
+        <text>暂无数据</text>
+    </view>
+  </block>
+</template>

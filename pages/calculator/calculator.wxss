@@ -1,0 +1,172 @@
+/* pages/calculator/calculator.wxss */
+@import '../../css/zy_common.wxss';
+
+.swiper-tab {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  background: #fff;
+}
+
+.swiper-tab-list {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+  background:#a0c2f0;
+  color:#fff;
+
+}
+.swiper-tab-list view{
+  padding:10rpx 25rpx;
+  border-radius:44rpx;
+}
+
+.on {
+  color:#fff;
+  background:#91b1db;
+
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.swiper-one .item-one {
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  padding-bottom: 50rpx;
+   overflow-y: scroll; 
+  margin-left:20rpx;
+  margin-right:20rpx;
+  border-radius: 10rpx;
+}
+
+.tit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 34rpx;
+  padding-bottom: 42rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.tit text {
+  margin: 0 18rpx;
+  box-sizing: border-box;
+}
+
+.tit .line {
+  width: 235rpx;
+  height: 1px;
+  background: #e5e5e5;
+}
+
+.tab-one {
+  display: flex;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  font-size: 32rpx;
+  color: #999;
+}
+
+.tab-one text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70rpx;
+}
+
+.item-one .active {
+  color: #fff;
+  background: #a0c2f0;
+}
+
+.zj_shuRu {
+  margin-top: 30rpx;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+}
+
+.zj_shuRu view {
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #999;
+  border-bottom: 1px solid #e5e5e5;
+}
+.zj_shuRu view  input,.zj_shuRu view  text,.zj_shuRu picker{
+  flex: 1;
+}
+.zj_shuRu view:last-child {
+  border-bottom: none;
+}
+.zj_shuRu view image{
+  width: 16rpx;
+  height: 14rpx;
+}
+.money_tip{
+  font-size: 28rpx;
+  color: #999;
+  margin-top:24rpx;
+}
+.calculation{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88rpx;
+  margin: 40rpx 70rpx;
+  background: #a0c2f0;
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+}
+.hover-active{
+  background: #ccc;
+}
+.jisuan_res{
+  background: #fff;
+  margin-left:20rpx;
+  margin-right:20rpx;
+  border-radius: 10rpx;
+}
+.res_box{
+  margin: 0 24rpx;
+  padding: 20rpx 0;
+}
+.jisuan_res>view:nth-child(2n){
+  border-bottom: 1px solid #e5e5e5;
+}
+.res_box view{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  line-height: 50rpx;
+}
+.telBtn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #a0c2f0;
+  color: white;
+  font-size: 30rpx;
+  z-index: 99;
+  height:88rpx;
+  line-height:88rpx;
+  border-radius:0;
+}

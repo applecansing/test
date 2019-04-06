@@ -1,0 +1,54 @@
+<!--pages/sub_details/sub_details.wxml-->
+<view class='bgImg'>
+  <image src='../../img/bg4.png'></image>
+</view>
+<view class='flex-ac detailsTit mlr24'>
+  <image src='{{imgArr[list.info.type*1-1]}}' class='roomImg'></image>
+  <view class='flex1'>
+      <view class='font15 col3 flex-ac'><image src='../../img/location.png' class='location mr20'></image>{{list.info.area_name}}</view>
+      <view class='font14 ptb20 btnBox '>
+        <view>{{list.info.type==1?'新房':list.info.type==2?'二手房':list.info.type==3?'租房':list.info.type==4?'商铺出租':'商铺出售'}}</view>
+        <view wx:if="{{list.info.type==1 || list.info.type==2 || list.info.type==3}}">{{list.info.want_layout_s==1?'一室':list.info.want_layout_s==2?'二室':list.info.want_layout_s==3?'三室':list.info.want_layout_s==4?'四室':list.info.want_layout_s==5?'四室以上':'厅室不限'}}</view>
+        <view  wx:if="{{list.info.type==4 || list.info.type==5}}">{{list.info.areas?list.info.areas:'面积不限'}}</view>
+        <view>{{list.info.title==''?'价格不限':list.info.title}}</view>
+      </view>
+    </view>
+</view>
+<view class='subListBox'>
+  <block wx:for='{{list.houses}}'  wx-if='{{loading}}'>
+    <view class='subList flex-ac mlr24 ptb30' bindtap='details' data-id='{{item.id}}'>
+      <view class='logos'>
+       <block wx:if="{{item.indexpic}}">
+        <image src='{{item.indexpic}}'></image>
+      </block>
+      <block wx:else>
+          <image src='../../img/no_picture.png'></image>
+        </block>
+      </view>
+      <view class='flex1'>
+        <view class='font15 col3'>{{item.title}}</view>
+        <view class='font14 btnBox2'>
+          <view>{{item.areas}}m²</view>
+          <view>{{item.layout_s}}室{{item.layout_t}}厅</view>
+        </view>
+        <view class='font14 col9 mb20'><image src='../../img/location.png' class='location mr20'></image>{{item.name}}</view>
+        <view class='LR-block'><text class='font16 color2'>￥{{list.info.type==1 || list.info.type==2 || list.info.type==5?item.totalprice+'万':(item.price|Int)+'/月'}}</text><text class='font14 colc'>{{item.ctime}}</text></view>  
+      </view>
+    </view>
+  </block>
+  <!-- <view class='subList flex-ac mlr24 ptb30'>
+    <view class='logos'><image src='../../img/img1.png'></image></view>
+    <view class='flex1'>
+      <view class='font15 col3'>恒大山水城</view>
+      <view class='font12 btnBox2'><view>95m2</view><view>95m2</view></view>
+      <view class='font13 col9 mb20'><image src='../../img/location.png' class='location mr20'></image>东城区</view>
+      <view class='LR-block'><text class='font16 color2'>￥36.0万</text><text class='font12 colc'>30分钟前</text></view>  
+    </view>
+  </view> -->
+</view>
+<block wx-if='{{!loading}}'>
+    <view class="tip">
+        <image src="../../img/empty.png"></image>
+        <text>暂无数据</text>
+    </view>
+</block>

@@ -1,0 +1,21 @@
+<!--pages/add/add.wxml-->
+<view class='imgBox'>
+  <image src='../../img/bg3.png'></image>
+</view>
+<!-- type
+1 新房
+2 二手房
+3 租房
+4 商户出租
+5 商户出售 -->
+<view class='choseBox'>
+  <view>
+      <navigator url='/pages/add_room/add_room?type=1' hover-class="none"><image src='../../img/room1.png'></image></navigator>
+      <navigator url='/pages/add_room/add_room?type=2'  hover-class="none"><image src='../../img/room2.png'></image></navigator>
+      <navigator url='/pages/add_room/add_room?type=3'  hover-class="none"><image src='../../img/room3.png'></image></navigator>
+  </view>
+  <view>
+      <navigator url='/pages/add_room/add_room?type=4'  hover-class="none"><image src='../../img/room4.png'></image></navigator>
+      <navigator url='/pages/add_room/add_room?type=5'  hover-class="none"><image src='../../img/room5.png'></image></navigator>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+<!--pages/b_phone/b_phone.wxml-->
+<view class='pt20'>
+  <view class='gaiPhone'>
+    <view class='LR-block plr24 ptb20'>
+      <input type='number' placeholder='请输入您的手机号码' placeholder-class='col9' value='' bindinput='phone'></input>
+      <button hover-class='active' class='yzmBtn' bindtap="getCode" disabled='{{dis_btn}}'>{{second==0?'获取验证码':second}}</button>
+    </view> 
+    <view class='plr24  ptb35 bgc'>
+      <input type='number' placeholder='请输入验证码' placeholder-class='col9' value='' bindinput='code'></input>
+    </view>
+  </view>
+  <button disabled="{{disabled}}"  class="confirm" loading="{{loading}}"  hover-class="active" bindtap="baocun" style='margin-top:120rpx;'>提交</button>
+</view>
+

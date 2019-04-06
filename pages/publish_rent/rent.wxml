@@ -1,0 +1,11 @@
+<import src="../template/publish.wxml" />
+<view class="classify flex_a bgc1 h100 tac colw">
+  <block wx:for='{{tab_bar}}'>
+    <view class="classify_item flex1 wx:if='{{item.selected==1?'active':''}}'" bindtap='select' data-index="{{index}}" data-selected="{{item.selected}}" data-type="{{item.type}}">
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+</view>
+<view class="container">
+  <template is="new_house" data="{{house_msg,msg,indexpic,lispic,src}}"/>
+</view>

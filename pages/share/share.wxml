@@ -1,0 +1,30 @@
+<!--pages/share/share.wxml-->
+<view class='pt20'>
+    <view class='subListBox'>
+      <block wx:for="{{list}}" wx:if="{{loading}}">
+          <view class='subList flex-ac mlr24 ptb30'>
+            <view class='logos' bindtap='details' data-id='{{item.houser_id}}'>
+            <block wx:if="{{item.indexpic}}">
+            <image src='{{item.indexpic}}'></image>
+            </block>
+            <block wx:else>
+              <image src='../../img/no_picture.png'></image>
+            </block>
+            </view>
+            <view class='flex1'>
+              <view class='font15 col3'>{{item.title}}</view>
+              <view class='font13 btnBox2'><view>{{item.areas}}m2</view><view>{{item.layout_s}}室{{item.layout_t}}厅</view></view>
+              <view class='font14 col9 mb20'><image src='../../img/location.png' class='location mr20'></image>{{item.name}}</view>
+              <view class='LR-block'><text class='font16 color2'>￥{{item.type==1 || item.type==2 || item.type==5?item.totalprice+'万':(item.price|Int)+'/月'}}</text></view>
+            </view>
+            <image src="../../img/ico30.png" style="width:34rpx;height: 34rpx;" bindtap='delShare' data-id='{{item.id}}'></image>
+          </view>
+        </block>
+    </view>
+</view>
+<block>
+  <view class="tip"  wx:if="{{!loading}}">
+      <image src="../../img/empty.png"></image>
+      <text>暂无数据</text>
+  </view>
+</block>

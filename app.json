@@ -1,0 +1,89 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/map/map",
+    "pages/publish_details/index",
+    "pages/publish_mine/mine",
+    "pages/publish_rent/rent",
+    "pages/publish_sale/sale",
+    "pages/publish/publish",
+    "pages/news/index",
+    "pages/headlines_details/details",
+    "pages/headlines/headlines",
+    "pages/house_details/details",
+    "pages/search/search",
+    "pages/new_index/index",
+    "pages/old_index/index",
+    "pages/center/center",
+    "pages/list_index/index",
+    "pages/calculator/calculator",
+    "pages/share/share",
+    "pages/subscription/subscription",
+    "pages/add/add",
+    "pages/edit_sub/edit_sub",
+    "pages/add_room/add_room",
+    "pages/address/address",
+    "pages/room_sum/room_sum",
+    "pages/sub_details/sub_details",
+    "pages/link_us/link_us",
+    "pages/person_data/person_data",
+    "pages/b_phone/b_phone",
+    "pages/gaiPhone/gaiPhone",
+    "pages/join/join",
+    "pages/expect_rooms/expect_rooms",
+    "pages/add_room_details1/add_room_details1",
+    "pages/add_room_details2/add_room_details2",
+    "pages/publish_edit/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#a0c2f0",
+    "navigationBarTitleText": "来宾房产网",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#a0c2f0",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "img/ico1.png",
+        "selectedIconPath": "img/ico1_a.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/new_index/index",
+        "iconPath": "img/ico2.png",
+        "selectedIconPath": "img/ico2_a.png",
+        "text": "新房"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "iconPath": "img/ico5.png",
+        "selectedIconPath": "img/ico5_a.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/old_index/index",
+        "iconPath": "img/ico3.png",
+        "selectedIconPath": "img/ico3_a.png",
+        "text": "二手房"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "iconPath": "img/ico4.png",
+        "selectedIconPath": "img/ico4_a.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位,为你推荐离你近的房源"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

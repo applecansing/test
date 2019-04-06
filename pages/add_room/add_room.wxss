@@ -1,0 +1,60 @@
+/* pages/add_room/add_room.wxss */
+@import '../../css/zy_common.wxss';
+
+.addressBox {
+  padding-top: 40rpx;
+  padding-bottom: 50rpx;
+  border-radius: 10rpx;
+  border: 1px solid #e5e5e5;
+}
+
+.location {
+  width: 18rpx;
+  height: 24rpx;
+}
+
+.btnBox view {
+  display: inline-block;
+  color: #f88;
+  border: 1px solid #f88;
+  padding: 10rpx 30rpx;
+  border-radius: 10rpx;
+  margin-right: 30rpx;
+  margin-top: 45rpx;
+  position: relative;
+}
+
+.list {
+  padding: 33rpx;
+  height: 180rpx;
+  border-radius: 10rpx;
+  border: 1px solid #e5e5e5;
+  margin-top: 20rpx;
+}
+
+.listImg {
+  width: 29rpx;
+  height: 23rpx;
+}
+
+.subBox {
+  border-radius: 10rpx;
+  border: 1px solid #e5e5e5;
+  margin-top: 20rpx;
+}
+
+.subBtn {
+  margin: 0;
+  background-color: #f88;
+  color: white;
+  font-size: 30rpx;
+}
+
+.close {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: -18rpx;
+  top: -18rpx;
+  z-index: 99;
+}
